@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Penambah Nilai Adil</title>
+<style>
+
+    /* --- WATERMARK BACKGROUND --- */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200"><text x="20" y="100" font-family="Arial" font-size="22" fill="rgba(0,0,0,0.12)" transform="rotate(-20)">Dibuat oleh: Adzani Kusumawardani, S.Pd</text></svg>');
+        background-repeat: repeat;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .box {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Penghitung Penambah Nilai Secara Adil</h2>
+
+<div class="box">
+    <label>Masukkan Nilai (dipisah baris):</label>
+    <textarea id="nilaiInput" rows="10"></textarea>
+</div>
+
+<div class="box">
+    <label>Nilai Minimal Target (KKM):</label>
+    <input type="number" id="minTarget" value="75">
+</div>
+
+<div class="box">
+    <label>Nilai Maksimal Target:</label>
+    <input type="number" id="maxTarget" value="98">
+</div>
+
+<button onclick="proses()">Hitung Nilai</button>
+
+<h3>Hasil (siap copy ke Excel):</h3>
+<textarea id="output" rows="15"></textarea>
+<button onclick="copyOutput()">Copy Hasil</button>
+
+<script>
+function proses() {
+    let input = document.getElementById("nilaiInput").value.trim().split("\n").map(Number);
+
+    let minTarget = Number(document.getElementById("minTarget").value);
+    let maxTarget = Number(document.getElementById("maxTarget").value);
+
+    let minVal = Math.min(...input);
+    let maxVal = Math.max(...input);
+
+    let result = "Nilai Asli\tNilai Akhir\tSubsidi\n";
+
+    input.forEach(nilai => {
+        let scaled = minTarget + (nilai - minVal) * (maxTarget - minTarget) / (maxVal - minVal);
+        let final = Math.round(scaled);
+        let selisih = final - nilai;
+
+        result += `${nilai}\t${final}\t${selisih}\n`;
+    });
+
+    document.getElementById("output").value = result;
+}
+
+function copyOutput() {
+    let textarea = document.getElementById("output");
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+}
+</script>
+
+</body>
+</html>
