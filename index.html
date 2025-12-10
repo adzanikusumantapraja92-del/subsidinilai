@@ -2,32 +2,60 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Penambah Nilai Adil</title>
+
 <style>
 
     /* --- WATERMARK BACKGROUND --- */
     body {
         font-family: Arial, sans-serif;
-        margin: 30px;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200"><text x="20" y="100" font-family="Arial" font-size="22" fill="rgba(0,0,0,0.12)" transform="rotate(-20)">Dibuat oleh: Adzani Kusumawardani, S.Pd</text></svg>');
+        margin: 10px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200"><text x="20" y="100" font-family="Arial" font-size="22" fill="rgba(0,0,0,0.10)" transform="rotate(-20)">Dibuat oleh: Adzani Kusumawardani, S.Pd</text></svg>');
         background-repeat: repeat;
     }
 
-    input, textarea {
-        width: 100%;
-        padding: 8px;
-        margin-top: 5px;
+    /* Margin membesar jika layar lebar */
+    @media (min-width: 700px) {
+        body {
+            margin: 30px;
+        }
     }
 
+    /* Input & textarea agar nyaman di HP */
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    /* Tombol besar, nyaman disentuh */
     button {
-        padding: 10px 15px;
+        width: 100%;
+        padding: 16px;
         margin-top: 10px;
         cursor: pointer;
+        font-size: 17px;
+        border-radius: 6px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+    }
+
+    button:hover {
+        background-color: #005ad3;
     }
 
     .box {
         margin-bottom: 20px;
     }
+
+    h2 {
+        font-size: 22px;
+    }
+
 </style>
 </head>
 <body>
