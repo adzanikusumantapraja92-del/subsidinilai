@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Gmail - Aladzan Corpora</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.16), transparent 28%),
+        linear-gradient(135deg, #f8fafc, #eaf1f8 58%, #f8fafc);
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: auto -6% 6% auto;
+      width: 360px;
+      height: 360px;
+      background: url('logo.png') no-repeat center;
+      background-size: contain;
+      opacity: 0.06;
+      transform: rotate(-10deg);
+      pointer-events: none;
+    }
+
+    .login-shell {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .login-card {
+      width: min(100%, 960px);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(226,232,240,0.9);
+      border-radius: 28px;
+      box-shadow: 0 28px 64px rgba(15, 23, 42, 0.12);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .login-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .login-hero {
+      padding: 44px 38px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.84), rgba(241,245,249,0.9)),
+        linear-gradient(145deg, #dbeafe, #f8fafc);
+      border-right: 1px solid rgba(226,232,240,0.8);
+    }
+
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(226,232,240,0.9);
+      box-shadow: 0 14px 30px rgba(37,99,235,0.08);
+      margin-bottom: 26px;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 18px;
+      padding: 10px;
+      background: linear-gradient(145deg, #ffffff, #eef4fb);
+      box-shadow: 0 12px 24px rgba(37,99,235,0.1);
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-sub {
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-copy {
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 460px;
+    }
+
+    .hero-panel {
+      margin-top: 28px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(226,232,240,0.85);
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 8px 8px 0;
+    }
+
+    .login-form-wrap {
+      padding: 44px 34px;
+      display: flex;
+      align-items: center;
+    }
+
+    .login-form {
+      width: 100%;
+    }
+
+    .form-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 16px;
+      padding: 13px 14px;
+      border: 1px solid #dbe3ee;
+      box-shadow: none;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.18);
+    }
+
+    .btn-login {
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      box-shadow: 0 16px 28px rgba(37,99,235,0.2);
+    }
+
+    .btn-login:hover {
+      opacity: 0.96;
+    }
+
+    .login-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .status-text {
+      min-height: 22px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #0f766e;
+    }
+
+    .status-text.error {
+      color: #b91c1c;
+    }
+
+    @media (max-width: 900px) {
+      .login-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .login-hero {
+        border-right: none;
+        border-bottom: 1px solid rgba(226,232,240,0.8);
+      }
+
+      .hero-title {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .login-shell {
+        padding: 14px;
+      }
+
+      .login-hero,
+      .login-form-wrap {
+        padding: 28px 20px;
+      }
+
+      .brand-box {
+        width: 100%;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-shell">
+    <div class="login-card">
+      <div class="login-grid">
+        <section class="login-hero">
+          <div class="brand-box">
+            <img src="logo.png" alt="Aladzan Corpora" class="brand-logo">
+            <div>
+              <div class="brand-title">Aladzan Corpora</div>
+              <div class="brand-sub">SOP & Panduan Digital Workspace</div>
+            </div>
+          </div>
+
+          <div class="hero-title">Masuk dengan akun Gmail yang terdaftar</div>
+          <div class="hero-copy">
+            Sistem ini sekarang memakai email Gmail sebagai identitas user. Owner bisa mengatur daftar email yang boleh masuk dari halaman owner.
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-chip">Identitas berbasis Gmail</div>
+            <div class="hero-chip">Owner dapat kelola daftar email</div>
+            <div class="hero-chip">UI lebih nyaman untuk desktop & mobile</div>
+          </div>
+        </section>
+
+        <section class="login-form-wrap">
+          <div class="login-form">
+            <div class="form-title">Login Workspace</div>
+            <div class="form-sub">Gunakan Gmail yang sudah terdaftar di sistem.</div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label small text-muted">Alamat Gmail</label>
+              <input type="email" id="email" class="form-control" placeholder="nama@gmail.com" autocomplete="email">
+            </div>
+
+            <div class="mb-4">
+              <label for="password" class="form-label small text-muted">Password Owner (opsional)</label>
+              <input type="password" id="password" class="form-control" placeholder="Isi jika masuk sebagai owner">
+            </div>
+
+            <button class="btn-login" onclick="login()">Masuk ke Dashboard</button>
+            <div id="statusText" class="status-text"></div>
+
+            <div class="login-note">
+              Catatan: ini sudah memakai identitas Gmail, tetapi belum memakai Google OAuth resmi. Untuk tombol “Sign in with Google” asli, kita masih perlu Google Client ID.
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const OWNER_PASSWORD = "owner123";
+    const PRIMARY_OWNER_EMAIL = "sanjayasena691@gmail.com";
+    const REGISTERED_ACCOUNTS_KEY = "registeredGoogleAccounts";
+
+    function safeParse(raw, fallback) {
+      try {
+        return raw ? JSON.parse(raw) : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function isValidGmail(email) {
+      return /^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test(String(email || "").trim());
+    }
+
+    function getRegisteredAccounts() {
+      const saved = safeParse(localStorage.getItem(REGISTERED_ACCOUNTS_KEY), []);
+      return Array.isArray(saved) ? saved.filter(item =>
+        item && typeof item === "object" && typeof item.email === "string" && typeof item.role === "string"
+      ) : [];
+    }
+
+    function saveRegisteredAccounts(accounts) {
+      localStorage.setItem(REGISTERED_ACCOUNTS_KEY, JSON.stringify(accounts));
+    }
+
+    function upsertAccount(email, role) {
+      const accounts = getRegisteredAccounts();
+      const normalizedEmail = String(email).trim().toLowerCase();
+      const existing = accounts.find(item => item.email.toLowerCase() === normalizedEmail);
+
+      if (existing) {
+        existing.role = role;
+      } else {
+        accounts.push({ email: normalizedEmail, role });
+      }
+
+      saveRegisteredAccounts(accounts);
+    }
+
+    function ensurePrimaryOwner() {
+      upsertAccount(PRIMARY_OWNER_EMAIL, "owner");
+    }
+
+    function setStatus(message, isError = false) {
+      const status = document.getElementById("statusText");
+      status.textContent = message;
+      status.classList.toggle("error", isError);
+    }
+
+    function login() {
+      ensurePrimaryOwner();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
+
+      if (!isValidGmail(email)) {
+        setStatus("Masukkan alamat Gmail yang valid.", true);
+        return;
+      }
+
+      const accounts = getRegisteredAccounts();
+      let account = accounts.find(item => item.email.toLowerCase() === email);
+      let role = "user";
+
+      if (email === PRIMARY_OWNER_EMAIL && password === OWNER_PASSWORD) {
+        role = "owner";
+        upsertAccount(email, "owner");
+        account = { email, role: "owner" };
+      }
+
+      if (!account) {
+        setStatus("Gmail ini belum terdaftar. Minta owner menambahkan email Anda dulu.", true);
+        return;
+      }
+
+      role = role === "owner" ? "owner" : account.role;
+
+      localStorage.setItem("activeUser", email);
+      localStorage.setItem("activeRole", role);
+      localStorage.setItem("activeEmail", email);
+      window.location.href = "panduan.html";
+    }
+
+    document.getElementById("email").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") login();
+    });
+
+    document.getElementById("password").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") login();
+    });
+
+    ensurePrimaryOwner();
+  </script>
+</body>
+</html>
