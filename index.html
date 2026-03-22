@@ -1561,17 +1561,31 @@
     }
 
     function normalizeStep(step = {}) {
-      const checked = Boolean(step.checked || step.checkedAt);
+      if (typeof step === "string") {
+        return {
+          text: step,
+          link: "",
+          catatan: "",
+          media: "",
+          mediaType: "",
+          mediaName: "",
+          checked: false,
+          checkedAt: null
+        };
+      }
+
+      const source = step && typeof step === "object" ? step : {};
+      const checked = Boolean(source.checked || source.checkedAt);
 
       return {
-        text: step.text || "",
-        link: step.link || "",
-        catatan: step.catatan || "",
-        media: step.media || step.img || "",
-        mediaType: step.mediaType || (step.img ? "image" : ""),
-        mediaName: step.mediaName || "",
+        text: source.text || source.langkah || source.title || "",
+        link: source.link || source.url || "",
+        catatan: source.catatan || source.note || source.notes || "",
+        media: source.media || source.img || source.image || "",
+        mediaType: source.mediaType || (source.img || source.image ? "image" : ""),
+        mediaName: source.mediaName || source.fileName || "",
         checked,
-        checkedAt: checked ? (step.checkedAt || null) : null
+        checkedAt: checked ? (source.checkedAt || null) : null
       };
     }
 
