@@ -533,6 +533,71 @@
       color: var(--danger);
     }
 
+    .value-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .payment-box,
+    .discount-box {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(120, 113, 108, 0.14);
+      margin-bottom: 16px;
+    }
+
+    .payment-title,
+    .discount-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: #111827;
+      margin-bottom: 10px;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .payment-method {
+      padding: 10px 0;
+      border-top: 1px dashed rgba(120, 113, 108, 0.18);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .payment-method:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .access-cta-btn {
+      width: 100%;
+      margin-top: 12px;
+      border-radius: 16px;
+      font-weight: 700;
+    }
+
+    .mobile-login-fab {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      z-index: 1190;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, #b45309, #ea580c);
+      box-shadow: 0 20px 36px rgba(180, 83, 9, 0.28);
+      font-family: "Segoe UI", sans-serif;
+      font-weight: 700;
+    }
+
     @keyframes toast-in {
       to {
         opacity: 1;
@@ -593,6 +658,10 @@
         border-radius: 24px 24px 0 0;
       }
 
+      .mobile-login-fab {
+        display: inline-flex;
+      }
+
       .story-panel,
       .form-panel {
         padding: 26px 20px;
@@ -611,6 +680,9 @@
 </head>
 <body>
   <div id="floatingToastWrap" class="floating-toast-wrap" aria-live="polite" aria-atomic="true"></div>
+  <button type="button" id="btnMobileLoginFab" class="mobile-login-fab">
+    <span>Masuk</span>
+  </button>
 
   <div class="login-shell">
     <div class="login-card">
@@ -753,21 +825,45 @@
         <div id="requestPricingStep" class="request-step">
           <div class="request-summary" id="requestSummaryBox"></div>
           <div class="price-card">
-            <div class="price-label">Harga Request Akses</div>
+            <div class="price-label">Akses Web Aladzan Corpora</div>
             <div class="price-value" id="basePriceText">Rp300.000</div>
-            <div class="price-meta" id="priceMetaText">Masukkan kode diskon di bawah ini. Kalau kodenya aktif dan diatur auto akses, akun lo bisa langsung aktif tanpa nunggu ACC manual.</div>
+            <div class="price-meta" id="priceMetaText">Akses ini dibuat untuk user yang memang siap pakai sistemnya, bukan cuma lihat-lihat.</div>
+            <ul class="value-list">
+              <li>Akses framework Aladzan Corpora dari desktop dan mobile</li>
+              <li>Panduan step-by-step yang bisa langsung dieksekusi</li>
+              <li>Checklist, catatan, dan sistem kerja yang terus diupdate</li>
+              <li>Akses maksimal 2 desktop/laptop dan 1 HP per Gmail</li>
+            </ul>
+            <button type="button" id="btnManualAccessCTA" class="btn btn-primary access-cta-btn">Akses Sekarang</button>
           </div>
+
+          <div class="payment-box">
+            <div class="payment-title">Pembayaran via transfer</div>
+            <div class="payment-method"><strong>Mandiri</strong>, AN Adzani Kusumawardani<br>1300019000382</div>
+            <div class="payment-method"><strong>BCA</strong><br>6768212300<br>Adzani Kusumawardani</div>
+            <div class="payment-method"><strong>Dana</strong><br>0895351651010</div>
+          </div>
+
           <div class="mb-3">
-            <label for="discountCodeInput" class="form-label">Kode Diskon</label>
-            <input type="text" id="discountCodeInput" class="form-control" placeholder="Masukkan kode diskon">
+            <label for="transferProofInput" class="form-label">Kirim Bukti TF</label>
+            <input type="file" id="transferProofInput" class="form-control" accept="image/*,.pdf">
+            <div class="helper-text">Upload screenshot atau file bukti transfer setelah bayar.</div>
           </div>
-          <div class="request-actions" style="margin-top: 0;">
-            <button type="button" id="btnApplyDiscount" class="btn btn-outline-primary">Gunakan Kode</button>
-            <button type="button" id="btnBackToRequestForm" class="btn btn-outline-secondary">Kembali</button>
+
+          <div class="discount-box">
+            <div class="discount-title">Punya Kode Diskon?</div>
+            <div class="mb-3">
+              <label for="discountCodeInput" class="form-label">Kode Diskon</label>
+              <input type="text" id="discountCodeInput" class="form-control" placeholder="Masukkan kode diskon">
+            </div>
+            <div class="request-actions" style="margin-top: 0;">
+              <button type="button" id="btnApplyDiscount" class="btn btn-outline-primary">Pakai Kode</button>
+              <button type="button" id="btnBackToRequestForm" class="btn btn-outline-secondary">Kembali</button>
+            </div>
           </div>
           <div id="discountStatus" class="request-status"></div>
           <div class="request-actions">
-            <button type="button" id="btnSubmitAccessRequest" class="btn btn-primary">Kirim Request Akses</button>
+            <button type="button" id="btnSubmitAccessRequest" class="btn btn-primary">Kirim Request & Bukti TF</button>
           </div>
         </div>
       </div>
@@ -776,6 +872,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
   <script>
     const OWNER_PASSWORD = "owner123";
     const PRIMARY_OWNER_EMAIL = "sanjayasena691@gmail.com";
@@ -795,6 +892,7 @@
     }
 
     const db = firebase.firestore();
+    const storage = firebase.storage();
     const accountsCol = db.collection("accounts");
     const accessRequestsCol = db.collection("accessRequests");
     const discountCodesCol = db.collection("discountCodes");
@@ -940,6 +1038,31 @@
       return { allowed: true };
     }
 
+    async function finishLogin(account) {
+      const deviceAccess = await registerDeviceForAccount(account);
+      if (!deviceAccess.allowed) {
+        setStatus(deviceAccess.reason || "Batas perangkat akun ini sudah penuh.", true);
+        showFloatingToast("Batas perangkat penuh", deviceAccess.reason || "Batas perangkat akun ini sudah penuh.", "error");
+        return false;
+      }
+
+      const role = account.role === "owner" ? "owner" : "user";
+      localStorage.setItem("activeUser", account.email);
+      localStorage.setItem("activeRole", role);
+      localStorage.setItem("activeEmail", account.email);
+      window.location.href = "index.html";
+      return true;
+    }
+
+    async function uploadTransferProof(file, email) {
+      if (!file) return { url: "", name: "" };
+      const safeName = `${Date.now()}_${String(file.name || "bukti").replace(/\s+/g, "_")}`;
+      const ref = storage.ref().child(`transfer-proofs/${accountDocId(email)}/${safeName}`);
+      const snapshot = await ref.put(file);
+      const url = await snapshot.ref.getDownloadURL();
+      return { url, name: file.name || safeName };
+    }
+
     function setStatus(message, isError = false) {
       const status = document.getElementById("statusText");
       status.textContent = message;
@@ -990,6 +1113,7 @@
       document.getElementById("requestPassword").value = document.getElementById("password").value;
       document.getElementById("requestPasswordConfirm").value = "";
       document.getElementById("discountCodeInput").value = "";
+      document.getElementById("transferProofInput").value = "";
       document.getElementById("priceMetaText").textContent = "Masukkan kode diskon di bawah ini. Kalau kodenya aktif dan diatur auto akses, akun lo bisa langsung aktif tanpa nunggu ACC manual.";
       appliedDiscount = null;
       requestDraft = null;
@@ -1081,6 +1205,9 @@
             : `Kode aktif. Potongan ${formatRupiah(discountAmount)} diterapkan, tetapi akun tetap perlu review owner.`,
           false
         );
+        showFloatingToast("Kode berhasil", appliedDiscount.autoApprove
+          ? "Kode diskon valid dan akun bisa langsung aktif setelah dikirim."
+          : "Kode diskon valid dan potongan harga sudah diterapkan.");
       } catch (error) {
         appliedDiscount = null;
         document.getElementById("basePriceText").textContent = formatRupiah(BASE_ACCESS_PRICE);
@@ -1104,6 +1231,17 @@
         const nowIso = new Date().toISOString();
         const finalPrice = appliedDiscount ? appliedDiscount.finalPrice : BASE_ACCESS_PRICE;
         const code = appliedDiscount?.code || "";
+        const proofFile = document.getElementById("transferProofInput").files?.[0] || null;
+        let proof = { url: "", name: "" };
+
+        if (!appliedDiscount?.autoApprove && !proofFile) {
+          setRequestStatus("discountStatus", "Upload bukti transfer dulu sebelum kirim request akses.", true);
+          return;
+        }
+
+        if (proofFile) {
+          proof = await uploadTransferProof(proofFile, email);
+        }
 
         if (appliedDiscount?.autoApprove) {
           await accountsCol.doc(accountDocId(email)).set({
@@ -1127,14 +1265,18 @@
             approvedAt: nowIso,
             appliedDiscountCode: code,
             quotedPrice: BASE_ACCESS_PRICE,
-            finalPrice
+            finalPrice,
+            transferProofUrl: proof.url,
+            transferProofName: proof.name
           }, { merge: true });
 
           setStatus("Kode berhasil dipakai. Akun lo langsung aktif, sekarang tinggal login.", false);
-          showFloatingToast("Akses aktif", "Kode diskon berhasil dipakai dan akun langsung mendapatkan akses.");
+          showFloatingToast("Akses aktif", "Kode diskon berhasil dipakai dan akun langsung login ke sistem.");
+          const approvedAccount = await getAccountByEmail(email);
           closeRequestOverlay();
-          document.getElementById("email").value = email;
-          document.getElementById("password").value = password;
+          if (approvedAccount) {
+            await finishLogin(approvedAccount);
+          }
           return;
         }
 
@@ -1152,7 +1294,9 @@
           requestedAt: nowIso,
           appliedDiscountCode: code,
           quotedPrice: BASE_ACCESS_PRICE,
-          finalPrice
+          finalPrice,
+          transferProofUrl: proof.url,
+          transferProofName: proof.name
         }, { merge: true });
 
         setStatus("Request akses berhasil dikirim. Owner akan lihat data akun dan harga aksesnya.", false);
@@ -1195,19 +1339,7 @@
           return;
         }
 
-        const deviceAccess = await registerDeviceForAccount(account);
-        if (!deviceAccess.allowed) {
-          setStatus(deviceAccess.reason || "Batas perangkat akun ini sudah penuh.", true);
-          showFloatingToast("Batas perangkat penuh", deviceAccess.reason || "Batas perangkat akun ini sudah penuh.", "error");
-          return;
-        }
-
-        const role = account.role === "owner" ? "owner" : "user";
-
-        localStorage.setItem("activeUser", email);
-        localStorage.setItem("activeRole", role);
-        localStorage.setItem("activeEmail", email);
-        window.location.href = "index.html";
+        await finishLogin(account);
       } catch (error) {
         handleCloudError(error, "Tidak bisa login karena koneksi ke server/Firebase sedang bermasalah.");
       }
@@ -1235,6 +1367,13 @@
     document.getElementById("btnSubmitAccessRequest").addEventListener("click", submitAccessRequest);
     document.getElementById("requestOverlay").addEventListener("click", (e) => {
       if (e.target.id === "requestOverlay") closeRequestOverlay();
+    });
+    document.getElementById("btnManualAccessCTA").addEventListener("click", () => {
+      document.getElementById("transferProofInput").scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+    document.getElementById("btnMobileLoginFab").addEventListener("click", () => {
+      document.querySelector(".form-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("email")?.focus();
     });
     document.getElementById("btnForgotPassword").addEventListener("click", () => {
       setStatus("Kalau lupa password, kirim ulang request akses atau hubungi owner untuk reset password.", false);
