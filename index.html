@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aladzan Corpora - SOP System</title>
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Aladzan Corpora">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -30,6 +37,13 @@
       z-index: 0;
       pointer-events: none;
       filter: blur(0.2px);
+    }
+
+    .container {
+      max-width: 1240px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 110px;
     }
 
     .header-box {
@@ -606,6 +620,18 @@
       color: #ea580c;
     }
 
+    .dock-button.info {
+      color: #7c2d12;
+    }
+
+    .dock-button.feedback {
+      color: #be123c;
+    }
+
+    .dock-button.feedback-inbox {
+      color: #c2410c;
+    }
+
     .offcanvas.offcanvas-end {
       width: min(420px, 92vw);
     }
@@ -644,6 +670,157 @@
     .account-role {
       font-size: 12px;
       color: #64748b;
+    }
+
+    .request-meta {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .request-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .request-empty {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px dashed #cbd5e1;
+      background: rgba(255,255,255,0.72);
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .feedback-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feedback-textarea {
+      min-height: 148px;
+      resize: vertical;
+    }
+
+    .feedback-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .feedback-item {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.05);
+    }
+
+    .feedback-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .feedback-email {
+      font-weight: 700;
+      color: #0f172a;
+      word-break: break-word;
+    }
+
+    .feedback-type {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .feedback-message {
+      color: #334155;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: 10px;
+    }
+
+    .feedback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .feedback-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .feedback-stat {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #e2e8f0;
+    }
+
+    .feedback-stat strong {
+      display: block;
+      font-size: 22px;
+      color: #0f172a;
+      line-height: 1.1;
+    }
+
+    .info-card {
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(239,246,255,0.92));
+      padding: 18px;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+    }
+
+    .info-card h6 {
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .info-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .info-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid #dbeafe;
+      color: #0f172a;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .info-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.08);
+      color: #0f172a;
+    }
+
+    .install-app-btn {
+      width: 100%;
+      margin-top: 14px;
+      border-radius: 14px;
     }
 
     @keyframes pulseLamp {
@@ -687,11 +864,47 @@
         grid-template-columns: 1fr;
       }
 
+      .feedback-summary {
+        grid-template-columns: 1fr;
+      }
+
       .floating-dock {
         top: auto;
         bottom: 16px;
         right: 12px;
         transform: none;
+        background: rgba(255,255,255,0.78);
+        padding: 8px;
+        border-radius: 999px;
+        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.14);
+        backdrop-filter: blur(12px);
+      }
+
+      body.step-view-active .floating-dock,
+      body.step-view-active .offcanvas,
+      body.step-view-active .header-box,
+      body.step-view-active .page-title {
+        display: none !important;
+      }
+
+      body.step-view-active {
+        overflow: hidden;
+      }
+
+      body.step-view-active .step-popup {
+        width: 100%;
+        max-width: none;
+        max-height: 100vh;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        padding: 20px 16px 28px;
+      }
+
+      body.step-view-active .overlay {
+        background: rgba(15, 23, 42, 0.55);
       }
     }
   </style>
@@ -792,6 +1005,9 @@
       <button type="button" class="dock-button timer" data-bs-toggle="offcanvas" data-bs-target="#timerDrawer" title="Timer">
         <i class="fas fa-clock"></i>
       </button>
+      <button type="button" class="dock-button checklist" data-bs-toggle="offcanvas" data-bs-target="#checklistDrawer" title="Checklist">
+        <i class="fas fa-list-check"></i>
+      </button>
       <button type="button" class="dock-button notes" data-bs-toggle="offcanvas" data-bs-target="#notesDrawer" title="Catatan Global">
         <i class="fas fa-note-sticky"></i>
       </button>
@@ -801,11 +1017,17 @@
       <button type="button" id="btnImportDock" class="dock-button notes" title="Import Data">
         <i class="fas fa-file-import"></i>
       </button>
+      <button type="button" id="btnFeedbackDock" class="dock-button feedback" data-bs-toggle="offcanvas" data-bs-target="#feedbackDrawer" title="Feedback">
+        <i class="fas fa-comment-dots"></i>
+      </button>
+      <button type="button" id="btnFeedbackInboxDock" class="dock-button feedback-inbox" data-bs-toggle="offcanvas" data-bs-target="#feedbackInboxDrawer" title="Penerima Feedback">
+        <i class="fas fa-inbox"></i>
+      </button>
+      <button type="button" class="dock-button info" data-bs-toggle="offcanvas" data-bs-target="#infoDrawer" title="Info Aladzan Corpora">
+        <i class="fas fa-circle-info"></i>
+      </button>
       <button type="button" id="btnAccountsDock" class="dock-button accounts" data-bs-toggle="offcanvas" data-bs-target="#accountsDrawer" title="Kelola Gmail">
         <i class="fas fa-users-gear"></i>
-      </button>
-      <button type="button" class="dock-button checklist" data-bs-toggle="offcanvas" data-bs-target="#checklistDrawer" title="Checklist">
-        <i class="fas fa-list-check"></i>
       </button>
     </div>
 
@@ -946,6 +1168,7 @@
           </div>
           <div class="shortcut-form">
             <input id="accountEmailInput" class="form-control" type="email" placeholder="nama@gmail.com">
+            <input id="accountPasswordInput" class="form-control" type="text" placeholder="password akun">
             <select id="accountRoleInput" class="form-select">
               <option value="user">User</option>
               <option value="owner">Owner</option>
@@ -955,12 +1178,143 @@
           <div id="accountStatus" class="step-meta mb-2">Belum ada Gmail terdaftar.</div>
           <div id="accountList" class="account-list"></div>
         </div>
+
+        <div class="module-panel mt-3">
+          <div class="workspace-head">
+            <div>
+              <div class="fw-semibold">Request Akses Masuk</div>
+              <small class="text-muted">Request dari halaman login akan masuk ke sini lengkap dengan password, harga, dan kode diskon.</small>
+            </div>
+          </div>
+          <div id="accessRequestStatus" class="step-meta mb-2">Belum ada request akses.</div>
+          <div id="accessRequestList" class="account-list"></div>
+        </div>
+
+        <div class="module-panel mt-3">
+          <div class="workspace-head">
+            <div>
+              <div class="fw-semibold">Kode Diskon Berjangka</div>
+              <small class="text-muted">Buat kode diskon 1, 2, atau 6 hari dan atur apakah kode itu bisa auto kasih akses.</small>
+            </div>
+          </div>
+          <div class="shortcut-form">
+            <input id="discountCodeOwnerInput" class="form-control" type="text" placeholder="Kode diskon, misal ALADZAN10">
+            <input id="discountAmountOwnerInput" class="form-control" type="number" min="0" step="1000" placeholder="Potongan rupiah">
+            <select id="discountDurationOwnerInput" class="form-select">
+              <option value="1">Berlaku 1 hari</option>
+              <option value="2">Berlaku 2 hari</option>
+              <option value="6">Berlaku 6 hari</option>
+            </select>
+            <select id="discountAutoApproveInput" class="form-select">
+              <option value="yes">Auto akses</option>
+              <option value="no">Review owner dulu</option>
+            </select>
+            <button id="btnAddDiscountCode" type="button" class="btn btn-primary">Simpan Kode</button>
+          </div>
+          <div id="discountCodeStatus" class="step-meta mb-2">Belum ada kode diskon aktif.</div>
+          <div id="discountCodeList" class="account-list"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="feedbackDrawer">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Kirim Feedback</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="module-panel">
+          <div class="workspace-head">
+            <div>
+              <div class="fw-semibold">Saran, Keluhan, atau Masukan</div>
+              <small class="text-muted">Kalau ada yang bikin bingung atau ada ide perbaikan, kirim dari sini ke owner.</small>
+            </div>
+          </div>
+          <div class="feedback-form">
+            <select id="feedbackTypeInput" class="form-select">
+              <option value="Saran">Saran</option>
+              <option value="Keluhan">Keluhan</option>
+              <option value="Masukan">Masukan</option>
+            </select>
+            <textarea id="feedbackMessageInput" class="form-control feedback-textarea" placeholder="Tulis feedback lo dengan jelas. Misalnya bagian mana yang bikin bingung, apa yang perlu dibenerin, atau ide apa yang pengen ditambahin."></textarea>
+            <button id="btnSubmitFeedback" type="button" class="btn btn-primary">Kirim ke Owner</button>
+          </div>
+          <div id="feedbackUserStatus" class="step-meta mt-3">Feedback yang masuk akan langsung terlihat oleh owner.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="feedbackInboxDrawer">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Penerima Feedback</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="module-panel">
+          <div class="workspace-head">
+            <div>
+              <div class="fw-semibold">Pesan Saran, Kritik, dan Masukan</div>
+              <small class="text-muted">Semua feedback dari user akan masuk ke sini untuk owner review.</small>
+            </div>
+          </div>
+          <div class="feedback-summary">
+            <div class="feedback-stat">
+              <strong id="feedbackTotalCount">0</strong>
+              <span class="step-meta">Total feedback masuk</span>
+            </div>
+            <div class="feedback-stat">
+              <strong id="feedbackUnreadCount">0</strong>
+              <span class="step-meta">Belum ditandai selesai</span>
+            </div>
+          </div>
+          <div id="feedbackOwnerStatus" class="step-meta mb-2">Belum ada feedback dari user.</div>
+          <div id="feedbackOwnerList" class="feedback-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="infoDrawer">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Info Aladzan Corpora</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="info-card">
+          <h6>Bangun sistem, bukan sekadar semangat sesaat.</h6>
+          <div class="text-muted">
+            Aladzan Corpora dibuat untuk bantu lo kerja lebih rapi, lebih fokus, dan lebih konsisten bangun sistem penghasilan. Kalau mau terus ngikutin update, insight, dan arah brand-nya, paling direkomendasikan follow Instagram dulu.
+          </div>
+          <button type="button" id="btnInstallApp" class="btn btn-primary install-app-btn d-none">
+            Install Aladzan Corpora
+          </button>
+          <div id="installAppHint" class="step-meta mt-2">
+            Di desktop atau HP yang support, web ini bisa dipasang seperti aplikasi.
+          </div>
+          <div class="info-links">
+            <a class="info-link" href="https://www.instagram.com/aladzan_corpora?utm_source=qr&igsh=MzdoZ2x1bnF5Y21z" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram fs-5 text-primary"></i>
+              <div>
+                <div class="fw-semibold">Instagram Aladzan Corpora</div>
+                <div class="step-meta">Rekomendasi utama untuk follow update dan konten terbaru.</div>
+              </div>
+            </a>
+            <a class="info-link" href="https://www.facebook.com/profile.php?id=61579177774933" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-facebook fs-5 text-primary"></i>
+              <div>
+                <div class="fw-semibold">Facebook Aladzan Corpora</div>
+                <div class="step-meta">Alternatif channel untuk lihat info dan aktivitas brand.</div>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- FIREBASE (compat only) -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 
   <!-- BOOTSTRAP -->
@@ -1000,7 +1354,15 @@
     const TIMER_KEY = `timerPrefs_${user}_${role}`;
     const GLOBAL_SPACE_KEY = `globalWorkspace_${user}_${role}`;
     const REGISTERED_ACCOUNTS_KEY = "registeredGoogleAccounts";
+    const ACCESS_REQUESTS_KEY = "accessRequestsAladzan";
+    const FEEDBACK_KEY = "aladzanUserFeedback";
     const PRIMARY_OWNER_EMAIL = "sanjayasena691@gmail.com";
+    const OWNER_PASSWORD = "owner123";
+    const BASE_ACCESS_PRICE = 300000;
+    const accountsCol = firebase.firestore().collection("accounts");
+    const accessRequestsCol = firebase.firestore().collection("accessRequests");
+    const feedbackCol = firebase.firestore().collection("feedback");
+    const discountCodesCol = firebase.firestore().collection("discountCodes");
 
     /* ======================
        DOM
@@ -1013,6 +1375,18 @@
       btnExport: document.getElementById("btnExport"),
       btnImportDock: document.getElementById("btnImportDock"),
       btnAccountsDock: document.getElementById("btnAccountsDock"),
+      btnFeedbackDock: document.getElementById("btnFeedbackDock"),
+      btnFeedbackInboxDock: document.getElementById("btnFeedbackInboxDock"),
+      feedbackTypeInput: document.getElementById("feedbackTypeInput"),
+      feedbackMessageInput: document.getElementById("feedbackMessageInput"),
+      btnSubmitFeedback: document.getElementById("btnSubmitFeedback"),
+      feedbackUserStatus: document.getElementById("feedbackUserStatus"),
+      feedbackOwnerStatus: document.getElementById("feedbackOwnerStatus"),
+      feedbackOwnerList: document.getElementById("feedbackOwnerList"),
+      feedbackTotalCount: document.getElementById("feedbackTotalCount"),
+      feedbackUnreadCount: document.getElementById("feedbackUnreadCount"),
+      btnInstallApp: document.getElementById("btnInstallApp"),
+      installAppHint: document.getElementById("installAppHint"),
       importFile: document.getElementById("importFile"),
       focusMinutes: document.getElementById("focusMinutes"),
       breakMinutes: document.getElementById("breakMinutes"),
@@ -1037,10 +1411,20 @@
       shortcutStatus: document.getElementById("shortcutStatus"),
       shortcutList: document.getElementById("shortcutList"),
       accountEmailInput: document.getElementById("accountEmailInput"),
+      accountPasswordInput: document.getElementById("accountPasswordInput"),
       accountRoleInput: document.getElementById("accountRoleInput"),
       btnAddAccount: document.getElementById("btnAddAccount"),
       accountStatus: document.getElementById("accountStatus"),
       accountList: document.getElementById("accountList"),
+      accessRequestStatus: document.getElementById("accessRequestStatus"),
+      accessRequestList: document.getElementById("accessRequestList"),
+      discountCodeOwnerInput: document.getElementById("discountCodeOwnerInput"),
+      discountAmountOwnerInput: document.getElementById("discountAmountOwnerInput"),
+      discountDurationOwnerInput: document.getElementById("discountDurationOwnerInput"),
+      discountAutoApproveInput: document.getElementById("discountAutoApproveInput"),
+      btnAddDiscountCode: document.getElementById("btnAddDiscountCode"),
+      discountCodeStatus: document.getElementById("discountCodeStatus"),
+      discountCodeList: document.getElementById("discountCodeList"),
       checklistDrawerBody: document.getElementById("checklistDrawerBody"),
       folderList: document.getElementById("folder-list"),
       panduanModal: document.getElementById("panduanModal"),
@@ -1120,6 +1504,18 @@
         hour: "2-digit",
         minute: "2-digit"
       });
+    }
+
+    function formatRupiah(value) {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+      }).format(Number(value || 0));
+    }
+
+    function accountDocId(email = "") {
+      return encodeURIComponent(String(email).trim().toLowerCase());
     }
 
     function encodeAttr(value) {
@@ -1268,6 +1664,9 @@
       shortcuts: []
     };
     let registeredAccounts = [];
+    let accessRequests = [];
+    let feedbackEntries = [];
+    let discountCodes = [];
     let timerState = {
       mode: "focus",
       remainingSeconds: 35 * 60,
@@ -1279,6 +1678,7 @@
       ambienceIntervalId: null,
       externalAudio: null
     };
+    let deferredInstallPrompt = null;
 
     /* ======================
        SAVE
@@ -1410,30 +1810,67 @@
       }
     }
 
-    function loadRegisteredAccounts() {
-      const saved = safeParse(localStorage.getItem(REGISTERED_ACCOUNTS_KEY), []);
-      registeredAccounts = Array.isArray(saved)
-        ? saved.filter(item => item && typeof item.email === "string" && typeof item.role === "string")
-        : [];
-
-      const hasPrimaryOwner = registeredAccounts.some(item =>
-        String(item.email).toLowerCase() === PRIMARY_OWNER_EMAIL.toLowerCase()
-      );
-
-      if (!hasPrimaryOwner) {
-        registeredAccounts.unshift({ email: PRIMARY_OWNER_EMAIL, role: "owner" });
-        saveRegisteredAccounts();
+    async function ensurePrimaryOwnerCloud() {
+      const ref = accountsCol.doc(accountDocId(PRIMARY_OWNER_EMAIL));
+      const snapshot = await ref.get();
+      if (!snapshot.exists) {
+        await ref.set({
+          name: "Primary Owner",
+          email: PRIMARY_OWNER_EMAIL,
+          role: "owner",
+          password: OWNER_PASSWORD,
+          devices: [],
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        });
+        return;
       }
+
+      const data = snapshot.data() || {};
+      const update = { role: "owner", updatedAt: new Date().toISOString() };
+      if (!data.password) update.password = OWNER_PASSWORD;
+      if (!Array.isArray(data.devices)) update.devices = [];
+      await ref.set(update, { merge: true });
     }
 
-    function saveRegisteredAccounts() {
-      try {
-        localStorage.setItem(REGISTERED_ACCOUNTS_KEY, JSON.stringify(registeredAccounts));
-        return true;
-      } catch (error) {
-        console.error("Gagal menyimpan akun terdaftar", error);
-        return false;
-      }
+    async function loadRegisteredAccounts() {
+      await ensurePrimaryOwnerCloud();
+      const snapshot = await accountsCol.get();
+      registeredAccounts = snapshot.docs.map((doc) => {
+        const data = doc.data() || {};
+        return {
+          id: doc.id,
+          name: data.name || "",
+          email: String(data.email || "").trim().toLowerCase(),
+          role: data.role === "owner" ? "owner" : "user",
+          password: typeof data.password === "string" ? data.password : "",
+          devices: Array.isArray(data.devices) ? data.devices : []
+        };
+      }).filter(item => item.email);
+    }
+
+    async function loadAccessRequests() {
+      const snapshot = await accessRequestsCol.get();
+      accessRequests = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() || {})
+      })).filter(item => item && item.email);
+    }
+
+    async function loadFeedbackEntries() {
+      const snapshot = await feedbackCol.get();
+      feedbackEntries = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() || {})
+      }));
+    }
+
+    async function loadDiscountCodes() {
+      const snapshot = await discountCodesCol.get();
+      discountCodes = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() || {})
+      }));
     }
 
     function renderRegisteredAccounts() {
@@ -1450,57 +1887,377 @@
         <div class="account-item">
           <div>
             <div class="account-email">${esc(item.email)}</div>
-            <div class="account-role">${esc(item.role === "owner" ? "Owner" : "User")}</div>
+            <div class="account-role">${esc(item.role === "owner" ? "Owner" : "User")} • ${item.password ? "Password aktif" : "Belum ada password"} • ${Array.isArray(item.devices) ? item.devices.filter(device => device.type === "desktop").length : 0}/2 desktop • ${Array.isArray(item.devices) ? item.devices.filter(device => device.type === "mobile").length : 0}/1 mobile</div>
           </div>
-          <button type="button" class="shortcut-action-btn delete" data-action="delete-account" data-email="${esc(item.email)}" title="Hapus Gmail">
-            <i class="fas fa-trash"></i>
-          </button>
+          <div class="request-actions">
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-action="reset-devices" data-email="${esc(item.email)}">Reset Device</button>
+            <button type="button" class="shortcut-action-btn delete" data-action="delete-account" data-email="${esc(item.email)}" title="Hapus Gmail">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
         </div>
       `).join("");
     }
 
-    function addRegisteredAccount() {
+    function renderAccessRequests() {
+      if (!el.accessRequestList || !el.accessRequestStatus) return;
+
+      const pendingRequests = accessRequests.filter(item =>
+        String(item.status || "pending").toLowerCase() !== "approved"
+      );
+
+      if (!pendingRequests.length) {
+        el.accessRequestStatus.textContent = "Belum ada request akses yang menunggu approval.";
+        el.accessRequestList.innerHTML = '<div class="request-empty">Request baru dari halaman login akan tampil di sini.</div>';
+        return;
+      }
+
+      el.accessRequestStatus.textContent = `${pendingRequests.length} request akses menunggu ACC owner.`;
+      el.accessRequestList.innerHTML = pendingRequests.map(item => `
+        <div class="account-item">
+          <div>
+            <div class="account-email">${esc(item.name || item.email)}</div>
+            <div class="request-meta">${esc(item.email)} • ${esc(formatRupiah(item.finalPrice || BASE_ACCESS_PRICE))}</div>
+            <div class="request-meta">Kode: ${esc(item.appliedDiscountCode || "-")} • Masuk ${esc(formatChecklistDate(item.requestedAt || ""))}</div>
+          </div>
+          <div class="request-actions">
+            <button type="button" class="btn btn-sm btn-success" data-action="approve-request" data-email="${esc(item.email)}">ACC</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-action="delete-request" data-email="${esc(item.email)}">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderDiscountCodes() {
+      if (!el.discountCodeList || !el.discountCodeStatus) return;
+
+      const activeCodes = [...discountCodes].sort((a, b) =>
+        new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()
+      );
+
+      if (!activeCodes.length) {
+        el.discountCodeStatus.textContent = "Belum ada kode diskon aktif.";
+        el.discountCodeList.innerHTML = '<div class="request-empty">Kode diskon yang owner buat akan tampil di sini.</div>';
+        return;
+      }
+
+      el.discountCodeStatus.textContent = `${activeCodes.length} kode diskon tersedia di sistem.`;
+      el.discountCodeList.innerHTML = activeCodes.map(item => `
+        <div class="account-item">
+          <div>
+            <div class="account-email">${esc(item.code || item.id)}</div>
+            <div class="request-meta">Potongan ${esc(formatRupiah(item.discountAmount || 0))} • ${item.autoApprove ? "Auto akses" : "Review owner"}</div>
+            <div class="request-meta">Berlaku sampai ${esc(formatChecklistDate(item.expiresAt || ""))}</div>
+          </div>
+          <div class="request-actions">
+            <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete-discount" data-code="${esc(item.code || item.id)}">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderFeedbackOwner() {
+      if (!el.feedbackOwnerList || !el.feedbackOwnerStatus) return;
+
+      const sorted = [...feedbackEntries].sort((a, b) =>
+        new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()
+      );
+      const unresolvedCount = sorted.filter(item => !item.resolved).length;
+
+      if (el.feedbackTotalCount) el.feedbackTotalCount.textContent = String(sorted.length);
+      if (el.feedbackUnreadCount) el.feedbackUnreadCount.textContent = String(unresolvedCount);
+
+      if (!sorted.length) {
+        el.feedbackOwnerStatus.textContent = "Belum ada feedback dari user.";
+        el.feedbackOwnerList.innerHTML = '<div class="request-empty">Feedback user akan muncul di sini setelah dikirim.</div>';
+        return;
+      }
+
+      el.feedbackOwnerStatus.textContent = `${sorted.length} feedback masuk. ${unresolvedCount} masih perlu ditinjau.`;
+      el.feedbackOwnerList.innerHTML = sorted.map(item => `
+        <div class="feedback-item">
+          <div class="feedback-head">
+            <div>
+              <div class="feedback-email">${esc(item.email)}</div>
+              <div class="request-meta">Masuk ${esc(formatChecklistDate(item.createdAt || ""))}</div>
+            </div>
+            <div class="feedback-type">${esc(item.type)}${item.resolved ? " • Selesai" : ""}</div>
+          </div>
+          <div class="feedback-message">${esc(item.message)}</div>
+          <div class="feedback-actions">
+            <button type="button" class="btn btn-sm btn-outline-primary" data-action="toggle-feedback" data-id="${esc(item.id)}">
+              ${item.resolved ? "Buka Lagi" : "Tandai Selesai"}
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete-feedback" data-id="${esc(item.id)}">
+              Hapus
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    async function addRegisteredAccount() {
       if (!isOwner) return;
 
       const email = String(el.accountEmailInput.value || "").trim().toLowerCase();
+      const password = String(el.accountPasswordInput.value || "").trim();
       const nextRole = el.accountRoleInput.value === "owner" ? "owner" : "user";
       if (!isValidGmail(email)) {
         el.accountStatus.textContent = "Masukkan Gmail yang valid.";
         return;
       }
-
-      const existing = registeredAccounts.find(item => item.email.toLowerCase() === email);
-      if (existing) {
-        existing.role = nextRole;
-      } else {
-        registeredAccounts.unshift({ email, role: nextRole });
+      if (password.length < 4) {
+        el.accountStatus.textContent = "Isi password minimal 4 karakter.";
+        return;
       }
 
-      if (!saveRegisteredAccounts()) {
+      const existing = registeredAccounts.find(item => item.email.toLowerCase() === email);
+      const payload = {
+        name: existing?.name || "",
+        email,
+        role: nextRole,
+        password,
+        devices: Array.isArray(existing?.devices) ? existing.devices : [],
+        updatedAt: new Date().toISOString()
+      };
+      if (!existing) payload.createdAt = new Date().toISOString();
+
+      try {
+        await accountsCol.doc(accountDocId(email)).set(payload, { merge: true });
+        await loadRegisteredAccounts();
+      } catch (error) {
+        console.error(error);
         el.accountStatus.textContent = "Gagal menyimpan Gmail.";
         return;
       }
 
       el.accountEmailInput.value = "";
+      el.accountPasswordInput.value = "";
       el.accountRoleInput.value = "user";
       renderRegisteredAccounts();
     }
 
-    function deleteRegisteredAccount(email) {
+    async function deleteRegisteredAccount(email) {
       if (!isOwner) return;
       if (String(email).toLowerCase() === String(activeEmail).toLowerCase()) {
         return alert("Akun Gmail yang sedang dipakai tidak bisa dihapus.");
       }
 
-      const previous = [...registeredAccounts];
-      registeredAccounts = registeredAccounts.filter(item => item.email.toLowerCase() !== String(email).toLowerCase());
-      if (!saveRegisteredAccounts()) {
-        registeredAccounts = previous;
+      try {
+        await accountsCol.doc(accountDocId(email)).delete();
+        await loadRegisteredAccounts();
+      } catch (error) {
+        console.error(error);
         el.accountStatus.textContent = "Gagal menghapus Gmail.";
         return;
       }
 
       renderRegisteredAccounts();
+    }
+
+    async function resetAccountDevices(email) {
+      if (!isOwner) return;
+
+      try {
+        await accountsCol.doc(accountDocId(email)).set({
+          devices: [],
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+        await loadRegisteredAccounts();
+      } catch (error) {
+        console.error(error);
+        el.accountStatus.textContent = "Gagal reset perangkat akun.";
+        return;
+      }
+
+      renderRegisteredAccounts();
+    }
+
+    async function approveAccessRequest(email) {
+      if (!isOwner) return;
+
+      const normalizedEmail = String(email || "").trim().toLowerCase();
+      if (!isValidGmail(normalizedEmail)) {
+        el.accessRequestStatus.textContent = "Email request tidak valid.";
+        return;
+      }
+
+      const requestItem = accessRequests.find(item => item.email.toLowerCase() === normalizedEmail);
+      const requestPassword = typeof requestItem?.password === "string" ? requestItem.password : "";
+      if (requestPassword.length < 4) {
+        el.accessRequestStatus.textContent = "Request ini belum punya password yang valid.";
+        return;
+      }
+
+      const existing = registeredAccounts.find(item => item.email.toLowerCase() === normalizedEmail);
+      try {
+        await accountsCol.doc(accountDocId(normalizedEmail)).set({
+          name: requestItem?.name || existing?.name || "",
+          email: normalizedEmail,
+          role: existing?.role === "owner" ? "owner" : "user",
+          password: requestPassword,
+          devices: Array.isArray(existing?.devices) ? existing.devices : [],
+          approvedAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          createdAt: existing?.createdAt || requestItem?.requestedAt || new Date().toISOString()
+        }, { merge: true });
+
+        await accessRequestsCol.doc(accountDocId(normalizedEmail)).set({
+          status: "approved",
+          approvedAt: new Date().toISOString()
+        }, { merge: true });
+
+        await loadRegisteredAccounts();
+        await loadAccessRequests();
+      } catch (error) {
+        console.error(error);
+        el.accessRequestStatus.textContent = "Gagal meng-ACC request akses.";
+        return;
+      }
+
+      renderRegisteredAccounts();
+      renderAccessRequests();
+    }
+
+    async function deleteAccessRequest(email) {
+      if (!isOwner) return;
+
+      try {
+        await accessRequestsCol.doc(accountDocId(email)).delete();
+        await loadAccessRequests();
+      } catch (error) {
+        console.error(error);
+        el.accessRequestStatus.textContent = "Gagal menghapus request akses.";
+        return;
+      }
+
+      renderAccessRequests();
+    }
+
+    async function submitFeedback() {
+      const type = String(el.feedbackTypeInput?.value || "Saran").trim() || "Saran";
+      const message = String(el.feedbackMessageInput?.value || "").trim();
+
+      if (!message) {
+        if (el.feedbackUserStatus) {
+          el.feedbackUserStatus.textContent = "Tulis dulu isi feedback sebelum dikirim.";
+        }
+        return;
+      }
+
+      const payload = {
+        email: activeEmail,
+        type,
+        message,
+        createdAt: new Date().toISOString(),
+        resolved: false
+      };
+
+      try {
+        await feedbackCol.add(payload);
+        await loadFeedbackEntries();
+      } catch (error) {
+        console.error(error);
+        if (el.feedbackUserStatus) {
+          el.feedbackUserStatus.textContent = "Gagal mengirim feedback. Coba lagi.";
+        }
+        return;
+      }
+
+      if (el.feedbackMessageInput) el.feedbackMessageInput.value = "";
+      if (el.feedbackTypeInput) el.feedbackTypeInput.value = "Saran";
+      if (el.feedbackUserStatus) {
+        el.feedbackUserStatus.textContent = "Feedback berhasil dikirim ke owner. Terima kasih, ini bantu banget buat ngebenerin sistem.";
+      }
+      renderFeedbackOwner();
+    }
+
+    async function toggleFeedbackResolved(id) {
+      if (!isOwner) return;
+
+      const target = feedbackEntries.find(item => item.id === String(id));
+      if (!target) return;
+      try {
+        await feedbackCol.doc(String(id)).set({
+          resolved: !target.resolved,
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+        await loadFeedbackEntries();
+      } catch (error) {
+        console.error(error);
+        el.feedbackOwnerStatus.textContent = "Gagal mengubah status feedback.";
+        return;
+      }
+
+      renderFeedbackOwner();
+    }
+
+    async function deleteFeedback(id) {
+      if (!isOwner) return;
+
+      try {
+        await feedbackCol.doc(String(id)).delete();
+        await loadFeedbackEntries();
+      } catch (error) {
+        console.error(error);
+        el.feedbackOwnerStatus.textContent = "Gagal menghapus feedback.";
+        return;
+      }
+
+      renderFeedbackOwner();
+    }
+
+    async function addDiscountCode() {
+      if (!isOwner) return;
+
+      const code = String(el.discountCodeOwnerInput?.value || "").trim().toUpperCase();
+      const discountAmount = Math.max(0, Number(el.discountAmountOwnerInput?.value || 0));
+      const durationDays = Math.max(1, Number(el.discountDurationOwnerInput?.value || 1));
+      const autoApprove = String(el.discountAutoApproveInput?.value || "yes") === "yes";
+
+      if (!code) {
+        el.discountCodeStatus.textContent = "Isi kode diskon dulu.";
+        return;
+      }
+
+      const expiresAt = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000).toISOString();
+      try {
+        await discountCodesCol.doc(code).set({
+          code,
+          discountAmount,
+          durationDays,
+          autoApprove,
+          expiresAt,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+        await loadDiscountCodes();
+      } catch (error) {
+        console.error(error);
+        el.discountCodeStatus.textContent = "Gagal menyimpan kode diskon.";
+        return;
+      }
+
+      el.discountCodeOwnerInput.value = "";
+      el.discountAmountOwnerInput.value = "";
+      el.discountDurationOwnerInput.value = "1";
+      el.discountAutoApproveInput.value = "yes";
+      renderDiscountCodes();
+    }
+
+    async function deleteDiscountCode(code) {
+      if (!isOwner) return;
+
+      try {
+        await discountCodesCol.doc(String(code || "").trim().toUpperCase()).delete();
+        await loadDiscountCodes();
+      } catch (error) {
+        console.error(error);
+        el.discountCodeStatus.textContent = "Gagal menghapus kode diskon.";
+        return;
+      }
+
+      renderDiscountCodes();
     }
 
     function getShortcutIcon(url) {
@@ -2524,6 +3281,7 @@
       el.popupLangkah.innerHTML = html;
       el.popup.classList.remove("d-none");
       el.overlay.classList.remove("d-none");
+      setMobileStepFocus(true);
       requestAnimationFrame(() => {
         el.popup.scrollTo({ top: 0, behavior: "auto" });
       });
@@ -2584,9 +3342,23 @@
       tampilkanLangkah();
     }
 
+    function setMobileStepFocus(active) {
+      if (window.innerWidth > 767) return;
+
+      document.body.classList.toggle("step-view-active", active);
+
+      if (!active) return;
+
+      document.querySelectorAll(".offcanvas.show").forEach(panel => {
+        const instance = bootstrap.Offcanvas.getInstance(panel) || bootstrap.Offcanvas.getOrCreateInstance(panel);
+        instance.hide();
+      });
+    }
+
     function closePopup() {
       el.popup.classList.add("d-none");
       el.overlay.classList.add("d-none");
+      setMobileStepFocus(false);
     }
 
     /* ======================
@@ -2721,6 +3493,58 @@
       }
     }
 
+    function setupPwaInstall() {
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch((error) => {
+            console.error("Gagal register service worker", error);
+          });
+        });
+      }
+
+      window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+
+        if (el.btnInstallApp) {
+          el.btnInstallApp.classList.remove("d-none");
+        }
+
+        if (el.installAppHint) {
+          el.installAppHint.textContent = "Klik tombol install untuk pasang app ini di desktop atau mobile.";
+        }
+      });
+
+      window.addEventListener("appinstalled", () => {
+        deferredInstallPrompt = null;
+        if (el.btnInstallApp) {
+          el.btnInstallApp.classList.add("d-none");
+        }
+        if (el.installAppHint) {
+          el.installAppHint.textContent = "Aplikasi berhasil dipasang. Sekarang bisa dibuka seperti app biasa.";
+        }
+      });
+    }
+
+    async function installApp() {
+      if (!deferredInstallPrompt) {
+        if (el.installAppHint) {
+          el.installAppHint.textContent = "Kalau tombol install belum muncul, buka lewat web server/hosting lalu gunakan menu Add to Home Screen atau Install App di browser.";
+        }
+        return;
+      }
+
+      deferredInstallPrompt.prompt();
+      const result = await deferredInstallPrompt.userChoice;
+      if (result.outcome === "accepted" && el.installAppHint) {
+        el.installAppHint.textContent = "Proses install disetujui. Tunggu sampai app selesai dipasang.";
+      }
+      deferredInstallPrompt = null;
+      if (el.btnInstallApp) {
+        el.btnInstallApp.classList.add("d-none");
+      }
+    }
+
     /* ======================
        EVENTS
      ====================== */
@@ -2731,12 +3555,23 @@
       if (!isOwner && el.btnTambah) el.btnTambah.style.display = "none";
       if (el.btnExport) el.btnExport.style.display = isOwner ? "inline-block" : "none";
       if (el.btnAccountsDock) el.btnAccountsDock.style.display = isOwner ? "inline-flex" : "none";
+      if (el.btnFeedbackDock) el.btnFeedbackDock.style.display = isOwner ? "none" : "inline-flex";
+      if (el.btnFeedbackInboxDock) el.btnFeedbackInboxDock.style.display = isOwner ? "inline-flex" : "none";
 
       el.btnTambah.addEventListener("click", handleTambahClick);
       el.btnAddStep.addEventListener("click", () => addStep());
       el.btnSavePanduan.addEventListener("click", simpanPanduan);
       el.btnExport.addEventListener("click", exportPanduan);
       el.btnImportDock.addEventListener("click", () => el.importFile.click());
+      if (el.btnInstallApp) {
+        el.btnInstallApp.addEventListener("click", installApp);
+      }
+      if (el.btnSubmitFeedback) {
+        el.btnSubmitFeedback.addEventListener("click", submitFeedback);
+      }
+      if (el.btnAddDiscountCode) {
+        el.btnAddDiscountCode.addEventListener("click", addDiscountCode);
+      }
       el.importFile.addEventListener("change", (e) => importPanduan(e.target.files[0]));
       el.focusMinutes.addEventListener("change", () => {
         const prefs = saveTimerPreferences();
@@ -2785,6 +3620,14 @@
           addRegisteredAccount();
         }
       });
+      if (el.accountPasswordInput) {
+        el.accountPasswordInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            addRegisteredAccount();
+          }
+        });
+      }
       el.shortcutUrlInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -2825,10 +3668,44 @@
       });
 
       el.accountList.addEventListener("click", (e) => {
-        const button = e.target.closest('[data-action="delete-account"]');
+        const button = e.target.closest("[data-action]");
         if (!button) return;
-        deleteRegisteredAccount(button.dataset.email || "");
+        if (button.dataset.action === "delete-account") return deleteRegisteredAccount(button.dataset.email || "");
+        if (button.dataset.action === "reset-devices") return resetAccountDevices(button.dataset.email || "");
       });
+
+      el.accessRequestList.addEventListener("click", (e) => {
+        const button = e.target.closest("[data-action]");
+        if (!button) return;
+        if (button.dataset.action === "approve-request") return approveAccessRequest(button.dataset.email || "");
+        if (button.dataset.action === "delete-request") return deleteAccessRequest(button.dataset.email || "");
+      });
+
+      if (el.discountCodeList) {
+        el.discountCodeList.addEventListener("click", (e) => {
+          const button = e.target.closest("[data-action='delete-discount']");
+          if (!button) return;
+          deleteDiscountCode(button.dataset.code || "");
+        });
+      }
+
+      if (el.feedbackOwnerList) {
+        el.feedbackOwnerList.addEventListener("click", (e) => {
+          const button = e.target.closest("[data-action]");
+          if (!button) return;
+          if (button.dataset.action === "toggle-feedback") return toggleFeedbackResolved(button.dataset.id || "");
+          if (button.dataset.action === "delete-feedback") return deleteFeedback(button.dataset.id || "");
+        });
+      }
+
+      if (el.feedbackMessageInput) {
+        el.feedbackMessageInput.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+            e.preventDefault();
+            submitFeedback();
+          }
+        });
+      }
 
       el.langkahList.addEventListener("change", (e) => {
         if (e.target && e.target.matches(".step-file")) {
@@ -2887,14 +3764,28 @@
       });
     }
 
-    bindEvents();
-    loadRegisteredAccounts();
-    renderRegisteredAccounts();
-    loadGlobalWorkspace();
-    syncGlobalWorkspaceUI();
-    initTimer();
-    saveData();
-    tampilkanFolder();
+    async function initApp() {
+      bindEvents();
+      setupPwaInstall();
+      await loadRegisteredAccounts();
+      renderRegisteredAccounts();
+      await loadAccessRequests();
+      renderAccessRequests();
+      await loadFeedbackEntries();
+      renderFeedbackOwner();
+      await loadDiscountCodes();
+      renderDiscountCodes();
+      loadGlobalWorkspace();
+      syncGlobalWorkspaceUI();
+      initTimer();
+      saveData();
+      tampilkanFolder();
+    }
+
+    initApp().catch((error) => {
+      console.error(error);
+      alert("Gagal memuat data cloud. Pastikan koneksi internet aktif dan konfigurasi Firebase sudah siap.");
+    });
   </script>
 </body>
 </html>
