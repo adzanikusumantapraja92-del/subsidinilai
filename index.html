@@ -67,13 +67,16 @@
 
     .header-box {
       backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.78);
-      padding: 20px 24px;
-      border-radius: 24px;
-      box-shadow: 0 18px 38px rgba(15,23,42,0.08);
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,250,252,0.92));
+      padding: 22px 24px;
+      border-radius: 28px;
+      box-shadow: 0 24px 44px rgba(15,23,42,0.09);
       position: relative;
       z-index: 2;
       border: 1px solid rgba(226,232,240,0.9);
+      overflow: hidden;
     }
 
     .brand-wrap {
@@ -83,26 +86,28 @@
     }
 
     .brand-logo {
-      width: 62px;
-      height: 62px;
+      width: 66px;
+      height: 66px;
       object-fit: contain;
-      border-radius: 18px;
+      border-radius: 20px;
       background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(241,245,249,0.92));
       padding: 10px;
-      box-shadow: 0 12px 28px rgba(37,99,235,0.12);
+      box-shadow: 0 16px 28px rgba(37,99,235,0.14);
       border: 1px solid rgba(226,232,240,0.8);
     }
 
     .brand-title {
-      font-weight: 700;
-      font-size: 20px;
+      font-weight: 800;
+      font-size: 24px;
       color: #1e293b;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .brand-sub {
-      font-size: 13px;
+      max-width: 420px;
+      font-size: 14px;
       color: #64748b;
+      line-height: 1.55;
     }
 
     .user-badge {
@@ -124,19 +129,29 @@
     }
 
     .page-title {
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 34px;
+      font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.03em;
+    }
+
+    .page-subtitle {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
     }
 
     .folder {
       cursor: pointer;
       padding: 24px 22px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.94);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top center, rgba(59,130,246,0.08), transparent 40%),
+        rgba(255,255,255,0.96);
       backdrop-filter: blur(10px);
-      box-shadow: 0 20px 44px rgba(15,23,42,0.08);
+      box-shadow: 0 18px 34px rgba(15,23,42,0.08);
       transition: 0.28s ease;
       border: 1px solid rgba(226,232,240,0.88);
       min-height: 226px;
@@ -144,8 +159,8 @@
     }
 
     .folder:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 26px 50px rgba(15,23,42,0.12);
+      transform: translateY(-7px);
+      box-shadow: 0 28px 52px rgba(15,23,42,0.12);
     }
 
     .folder-thumb {
@@ -164,6 +179,8 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       line-height: 1.35;
+      font-size: 17px;
+      letter-spacing: -0.02em;
     }
 
     .folder-card-col {
@@ -196,15 +213,18 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: white;
+      background:
+        radial-gradient(circle at top right, rgba(59,130,246,0.1), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.98));
       padding: 30px;
-      border-radius: 20px;
+      border-radius: 28px;
       z-index: 1050;
       width: 90%;
-      max-width: 680px;
+      max-width: 720px;
       max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+      box-shadow: 0 28px 60px rgba(15,23,42,0.18);
+      border: 1px solid rgba(226,232,240,0.95);
     }
 
     .step-nav-row {
@@ -521,18 +541,99 @@
     .step-link-button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       border-radius: 999px;
+      font-weight: 600;
+      padding: 12px 16px 12px 12px;
+      border-width: 1px;
+      box-shadow: 0 14px 30px rgba(37,99,235,0.12);
+    }
+
+    .step-link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #dbeafe, #ffffff);
+      color: #2563eb;
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+
+    .step-link-button-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.3;
+    }
+
+    .step-link-button-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    .step-link-button-meta {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
     }
 
     .step-link-info {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 10px;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
       color: #475569;
       font-size: 13px;
       font-weight: 600;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(248,250,252,0.9);
+      border: 1px solid rgba(226,232,240,0.95);
+    }
+
+    .step-link-info-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .step-link-domain {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .step-link-domain strong {
+      color: #0f172a;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .step-link-domain span {
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .step-link-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
     .step-body-text {
@@ -551,10 +652,13 @@
 
     .step-section-card {
       border: 1px solid rgba(226, 232, 240, 0.95);
-      border-radius: 18px;
-      padding: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
-      margin-top: 14px;
+      border-radius: 22px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(59,130,246,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.99), rgba(248,250,252,0.97));
+      margin-top: 16px;
+      box-shadow: 0 18px 34px rgba(15,23,42,0.06);
     }
 
     .step-section-label {
@@ -1337,6 +1441,10 @@
       overflow: hidden;
     }
 
+    .step-note-inline-excerpt[hidden] {
+      display: none !important;
+    }
+
     .offcanvas-header {
       border-bottom: 1px solid #e2e8f0;
     }
@@ -1538,6 +1646,11 @@
         font-size: 28px;
       }
 
+      .step-link-info {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
       .progress-shell {
         position: static;
       }
@@ -1559,6 +1672,10 @@
       .brand-logo {
         width: 54px;
         height: 54px;
+      }
+
+      .brand-title {
+        font-size: 22px;
       }
 
       .page-title {
@@ -1666,8 +1783,8 @@
       <div class="brand-wrap">
         <img src="Alco_logo.png" alt="Aladzan Corpora" class="brand-logo">
         <div>
-          <div class="brand-title">Aladzan Corpora</div>
-          <div class="brand-sub">Panduan kerja yang lebih rapi, cepat, dan nyaman diakses</div>
+          <div class="brand-title">Alco Flow</div>
+          <div class="brand-sub">Panduan yang lebih rapi, cept dan nyaman</div>
         </div>
       </div>
 
@@ -1681,8 +1798,8 @@
 
     <!-- TITLE -->
     <div class="mb-4">
-      <div class="page-title">Panduan & SOP</div>
-      <small class="text-muted">Akses panduan kerja dengan cepat & terstruktur</small>
+      <div class="page-title">Alco Flow Guide</div>
+      <small class="page-subtitle">Panduan kerja yang lebih terstruktur, ringan dibuka, dan nyaman dilanjutkan.</small>
     </div>
 
     <!-- CONTENT -->
@@ -2507,9 +2624,18 @@
       }
     }
 
+    function extractImportedPanduan(obj) {
+      if (!obj || typeof obj !== "object" || Array.isArray(obj)) return null;
+      if (obj.panduan && typeof obj.panduan === "object" && !Array.isArray(obj.panduan)) {
+        return obj.panduan;
+      }
+      return obj;
+    }
+
     function validateImportedData(obj) {
-      if (!obj || typeof obj !== "object" || Array.isArray(obj)) return false;
-      return Object.values(obj).every(items =>
+      const panduan = extractImportedPanduan(obj);
+      if (!panduan || typeof panduan !== "object" || Array.isArray(panduan)) return false;
+      return Object.values(panduan).every(items =>
         Array.isArray(items) && items.every(item =>
           item && typeof item === "object" &&
           typeof item.judul === "string" &&
@@ -2564,6 +2690,40 @@
         checked,
         checkedAt: checked ? (source.checkedAt || null) : null
       };
+    }
+
+    function sanitizeGuideForExport(item = {}) {
+      return {
+        id: item.id || uid(),
+        judul: item.judul || "Tanpa Judul",
+        langkah: Array.isArray(item.langkah)
+          ? item.langkah.map(step => {
+            const normalized = normalizeStep(step);
+            return {
+              text: normalized.text,
+              link: normalized.link,
+              catatan: normalized.catatan,
+              media: normalized.media,
+              mediaType: normalized.mediaType,
+              mediaName: normalized.mediaName
+            };
+          })
+          : [],
+        updatedAt: item.updatedAt || new Date().toISOString()
+      };
+    }
+
+    function sanitizeShortcutsForExport() {
+      return (globalWorkspace.shortcuts || []).map(item => ({
+        id: item.id || uid(),
+        title: String(item.title || "").trim(),
+        url: ensureUrlProtocol(item.url)
+      })).filter(item => item.title && item.url);
+    }
+
+    function getSafeExportFilename(name) {
+      const clean = String(name || "").trim().replace(/[<>:"/\\|?*\x00-\x1F]+/g, "_");
+      return clean || "export";
     }
 
     function ensureUrlProtocol(value) {
@@ -4572,7 +4732,7 @@
       el.checklistDrawerBody.innerHTML = renderProgressSection(items);
     }
 
-    function tampilkanJudul(folder) {
+    function tampilkanJudul(folder, options = {}) {
       currentFolder = folder;
       updateTambahButton();
       closePopup();
@@ -4631,6 +4791,13 @@
         </div>
       `;
       refreshChecklistDrawer(folder);
+
+      if (!isOwner && options.autoOpenResume) {
+        const resumeGuideIndex = getResumeGuideIndex(items);
+        requestAnimationFrame(() => {
+          bukaPanduan(folder, resumeGuideIndex, { resume: true });
+        });
+      }
     }
 
     function editFolder(folder) {
@@ -4694,6 +4861,55 @@
       return saveData();
     }
 
+    function getResumeStepIndex(steps = []) {
+      if (!Array.isArray(steps) || steps.length === 0) return 0;
+
+      const firstPendingIndex = steps.findIndex(step => !step?.checked);
+      if (firstPendingIndex >= 0) return firstPendingIndex;
+
+      let lastCheckedIndex = 0;
+      let lastCheckedAt = 0;
+
+      steps.forEach((step, index) => {
+        const checkedAt = step?.checkedAt ? new Date(step.checkedAt).getTime() : 0;
+        if (checkedAt >= lastCheckedAt) {
+          lastCheckedAt = checkedAt;
+          lastCheckedIndex = index;
+        }
+      });
+
+      return lastCheckedIndex;
+    }
+
+    function getResumeGuideIndex(items = []) {
+      if (!Array.isArray(items) || items.length === 0) return 0;
+
+      const progress = items.map((item, index) => {
+        const langkah = Array.isArray(item?.langkah) ? item.langkah : [];
+        const pendingCount = langkah.filter(step => !step?.checked).length;
+        const lastCheckedAt = langkah.reduce((latest, step) => {
+          const checkedAt = step?.checkedAt ? new Date(step.checkedAt).getTime() : 0;
+          return checkedAt > latest ? checkedAt : latest;
+        }, 0);
+        return { index, pendingCount, lastCheckedAt };
+      });
+
+      const latestInProgress = progress
+        .filter(item => item.pendingCount > 0 && item.lastCheckedAt > 0)
+        .sort((a, b) => b.lastCheckedAt - a.lastCheckedAt)[0];
+      if (latestInProgress) return latestInProgress.index;
+
+      const firstPending = progress.find(item => item.pendingCount > 0);
+      if (firstPending) return firstPending.index;
+
+      const latestCompleted = progress
+        .filter(item => item.lastCheckedAt > 0)
+        .sort((a, b) => b.lastCheckedAt - a.lastCheckedAt)[0];
+      if (latestCompleted) return latestCompleted.index;
+
+      return 0;
+    }
+
     function renderChecklist(step) {
       return `
         <div class="form-check mt-3">
@@ -4736,16 +4952,34 @@
           </div>
         `;
       } else if (normalizedLink) {
+        const linkIcon = getShortcutIcon(normalizedLink);
+        const linkDomain = getShortcutDomain(normalizedLink);
         html += `
           <div class="step-section-card">
             <span class="step-section-label">Link Pendukung</span>
             <a class="btn btn-outline-primary step-link-button smart-step-link" href="${esc(normalizedLink)}" data-smart-url="${esc(normalizedLink)}" target="_blank" rel="noopener noreferrer">
-              <i class="${esc(getShortcutIcon(normalizedLink))}"></i>
-              Buka Link
+              <span class="step-link-icon">
+                <i class="${esc(linkIcon)}"></i>
+              </span>
+              <span class="step-link-button-label">
+                <span class="step-link-button-title">Buka Link Pendukung</span>
+                <span class="step-link-button-meta">${esc(linkDomain)}</span>
+              </span>
             </a>
             <div class="step-link-info">
-              <i class="${esc(getShortcutIcon(normalizedLink))}"></i>
-              <span>${esc(getShortcutDomain(normalizedLink))}</span>
+              <div class="step-link-info-main">
+                <span class="step-link-icon">
+                  <i class="${esc(linkIcon)}"></i>
+                </span>
+                <span class="step-link-domain">
+                  <strong>${esc(linkDomain)}</strong>
+                  <span>Link siap dibuka saat langkah ini dikerjakan</span>
+                </span>
+              </div>
+              <span class="step-link-badge">
+                <i class="fas fa-up-right-from-square"></i>
+                Akses Cepat
+              </span>
             </div>
           </div>
         `;
@@ -4808,7 +5042,7 @@
           <div class="step-section-card position-relative">
             <small class="step-section-label">Catatan</small>
             <div class="step-note-preview-card">
-              <div class="step-note-inline-excerpt">${esc(getNoteExcerpt(step.catatan, 200))}</div>
+              <div class="step-note-inline-excerpt" id="stepNoteInlineExcerpt">${esc(getNoteExcerpt(step.catatan, 200))}</div>
               <div class="note-richtext" id="stepNotePreviewContent" hidden>${formatRichNote(step.catatan)}</div>
               <div class="step-note-preview-actions">
                 <button
@@ -4850,14 +5084,14 @@
 
     }
 
-    function bukaPanduan(folder, index) {
+    function bukaPanduan(folder, index, options = {}) {
       const panduan = dataPanduan[folder]?.[index];
       const steps = panduan?.langkah || [];
       if (steps.length === 0) return alert("Langkah kosong.");
 
       currentGuide = { folder, index };
       currentSteps = steps;
-      langkahIndex = 0;
+      langkahIndex = options.resume ? getResumeStepIndex(steps) : 0;
       tampilkanLangkah();
     }
 
@@ -5006,18 +5240,17 @@
     ====================== */
     function exportPanduan() {
       if (!isOwner) return alert("Hanya owner yang bisa export.");
-
-      const blob = new Blob(
-        [JSON.stringify(dataPanduan, null, 2)],
-        { type: "application/json" }
+      const sanitizedPanduan = Object.fromEntries(
+        Object.entries(dataPanduan).map(([folder, items]) => [
+          folder,
+          (items || []).map(item => sanitizeGuideForExport(item))
+        ])
       );
 
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `panduan_${user}_${role}_${new Date().toISOString().slice(0, 10)}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
+      downloadJsonFile({
+        panduan: sanitizedPanduan,
+        shortcuts: sanitizeShortcutsForExport()
+      }, `panduan_${user}_${new Date().toISOString().slice(0, 10)}.json`);
     }
 
     function downloadJsonFile(payload, filename) {
@@ -5033,7 +5266,12 @@
     function getFolderExportPayload(folder) {
       const items = dataPanduan[folder];
       if (!items || !items.length) return null;
-      return { [folder]: items };
+      return {
+        panduan: {
+          [folder]: items.map(item => sanitizeGuideForExport(item))
+        },
+        shortcuts: sanitizeShortcutsForExport()
+      };
     }
 
     function backupFolder(folder) {
@@ -5041,7 +5279,7 @@
       const payload = getFolderExportPayload(folder);
       if (!payload) return alert("Folder tidak ditemukan atau kosong.");
 
-      const safeFolder = folder.replace(/[^\w\-]+/g, "_");
+      const safeFolder = getSafeExportFilename(folder);
       downloadJsonFile(payload, `backup_folder_${safeFolder}_${new Date().toISOString().slice(0, 10)}.json`);
     }
 
@@ -5050,12 +5288,12 @@
       const payload = getFolderExportPayload(folder);
       if (!payload) return alert("Folder tidak ditemukan atau kosong.");
 
-      const safeFolder = folder.replace(/[^\w\-]+/g, "_");
-      downloadJsonFile(payload, `folder_${safeFolder}_share_${new Date().toISOString().slice(0, 10)}.json`);
+      const safeFolder = getSafeExportFilename(folder);
+      downloadJsonFile(payload, `${safeFolder}.json`);
     }
 
     function mergeImportedData(parsed) {
-      const normalized = normalizeData(parsed);
+      const normalized = normalizeData(extractImportedPanduan(parsed));
       const merged = JSON.parse(JSON.stringify(dataPanduan));
 
       Object.entries(normalized).forEach(([folder, items]) => {
@@ -5076,6 +5314,32 @@
       return merged;
     }
 
+    function mergeImportedShortcuts(parsed) {
+      const importedShortcuts = Array.isArray(parsed?.shortcuts) ? parsed.shortcuts : [];
+      if (!importedShortcuts.length) return [...(globalWorkspace.shortcuts || [])];
+
+      const merged = [...(globalWorkspace.shortcuts || [])];
+      importedShortcuts.forEach((item) => {
+        const title = String(item?.title || "").trim();
+        const url = ensureUrlProtocol(item?.url || "");
+        if (!title || !url) return;
+
+        const exists = merged.some(shortcut =>
+          String(shortcut.title || "").trim().toLowerCase() === title.toLowerCase() &&
+          ensureUrlProtocol(shortcut.url || "") === url
+        );
+        if (exists) return;
+
+        merged.unshift({
+          id: uid(),
+          title,
+          url
+        });
+      });
+
+      return merged;
+    }
+
     function importPanduan(file) {
       if (!file) return;
 
@@ -5091,10 +5355,20 @@
           if (!confirm("Import akan menambahkan data dari file ke data yang sudah ada. Lanjutkan?")) return;
 
           const prev = JSON.parse(JSON.stringify(dataPanduan));
+          const prevShortcuts = JSON.parse(JSON.stringify(globalWorkspace.shortcuts || []));
           dataPanduan = mergeImportedData(parsed);
+          globalWorkspace.shortcuts = mergeImportedShortcuts(parsed);
 
           if (!saveData()) {
             dataPanduan = prev;
+            globalWorkspace.shortcuts = prevShortcuts;
+            return;
+          }
+
+          if (!saveGlobalWorkspace()) {
+            dataPanduan = prev;
+            globalWorkspace.shortcuts = prevShortcuts;
+            saveData();
             return;
           }
 
@@ -5103,6 +5377,7 @@
           } else {
             tampilkanFolder();
           }
+          syncGlobalWorkspaceUI();
           alert("Import berhasil ditambahkan.");
         } catch (err) {
           alert("Gagal import: " + (err.message || "Format file salah."));
@@ -5304,9 +5579,9 @@
         const folder = target.dataset.folder ? decodeAttr(target.dataset.folder) : null;
         const index = target.dataset.index !== undefined ? Number(target.dataset.index) : null;
 
-        if (action === "open-folder") return tampilkanJudul(folder);
+        if (action === "open-folder") return tampilkanJudul(folder, { autoOpenResume: !isOwner });
         if (action === "back-folder") return tampilkanFolder();
-        if (action === "open-panduan") return bukaPanduan(folder, index);
+        if (action === "open-panduan") return bukaPanduan(folder, index, { resume: !isOwner });
         if (action === "backup-folder" && isOwner) return backupFolder(folder);
         if (action === "export-folder" && isOwner) return exportSingleFolder(folder);
         if (action === "edit-folder" && isOwner) return editFolder(folder);
@@ -5479,14 +5754,17 @@
         const previewButton = e.target.closest("#btnToggleStepNotePreview");
         if (previewButton) {
           const content = el.popupLangkah.querySelector("#stepNotePreviewContent");
+          const excerpt = el.popupLangkah.querySelector("#stepNoteInlineExcerpt");
           if (!content) return;
           const isHidden = content.hasAttribute("hidden");
           if (isHidden) {
             content.removeAttribute("hidden");
+            excerpt?.setAttribute("hidden", "");
             previewButton.textContent = "Tutup Pratinjau";
             previewButton.setAttribute("aria-expanded", "true");
           } else {
             content.setAttribute("hidden", "");
+            excerpt?.removeAttribute("hidden");
             previewButton.textContent = "Pratinjau Catatan";
             previewButton.setAttribute("aria-expanded", "false");
           }
